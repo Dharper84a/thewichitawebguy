@@ -1,0 +1,36 @@
+@import './loader.scss';
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body {
+  background: $backgroundColor;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: $defaultFontColor;
+  font-family: 'Lato', sans-serif;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  li {
+    margin: 0.5rem 0;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}

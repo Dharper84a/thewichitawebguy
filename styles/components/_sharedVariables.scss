@@ -1,0 +1,20 @@
+// Colors
+$backgroundColor: #ffffff;
+$defaultFontColor: #1d1d1d;
+
+// Layout
+$mobileSideMargin: 1rem;
+$tabletSideMargin: 2rem;
+$desktopSideMargin: 3rem;
+$viewportMaxWidth: 100rem;
+$siteHeaderHeight: 25rem;
+
+// Device Sizes
+$largePhoneSize: 768px;
+$tabletSize: 1024px;
+$desktopSize: 1366px;
+
+// Media
+$largePhoneMedia: screen and (min-width: $largePhoneSize);
+$tabletMedia: screen and (min-width: $tabletSize);
+$desktopMedia: screen and (min-width: $desktopSize);
