@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 import {Overlay} from './styles';
 const yearsSinceHandler = (refYear) => {
@@ -50,47 +52,93 @@ const timeOfDayHandler = () => {
 const GrettingsOverlay = (props) => {
   const [marriedFor, setMarriedFor] = useState(0);
   const [sinceLostChild, setSinceLostChild] = useState(0);
-  const [dailyWords, setDailyWords] = useState({heading: '', subHeading: '', icon: null});
+  const [dailyWords, setDailyWords] = useState({heading: null, subHeading: null, icon: null});
   const [progress, setProgress] = useState(0);
   const [progressInterval, setProgressInterval] = useState(0);
-  
+  const [openDuration, setOpenDuration] = useState(null);
 
-  var timer = null;
+  const componentUnloadHandler = () => {
+    props.onClose();
+  }
+
+  const progressUpdateHandler = () => {
+    setProgressInterval(progressInterval + 1);
+    let value = (progressInterval * 25) / parseInt(props.openDuration) * 100;
+    setProgress(value);
+  }
   
   useEffect(() => {
     setMarriedFor(yearsSinceHandler(2014));
     setSinceLostChild(yearsSinceHandler(2018));
     setDailyWords(timeOfDayHandler());
 
-
   }, []);
 
 
-  setTimeout(() => {
-    setProgressInterval(progressInterval + 1);
-    let value = (progressInterval * 25) / parseInt(props.openDuration) * 100;
-    setProgress(value);
-    console.log('value', progress);
-  }, 25);
+
+
+  useEffect(() => {
+    if(dailyWords.heading === null) return;
+
+    if(dailyWords.heading) {
+      if(dailyWords.heading !== '...') {
+        setOpenDuration(-1);
+        // setOpenDuration(props.openDuration);
+      } else {
+        setOpenDuration(-1);
+      }
+    }
+    
+  }, [dailyWords, props])
+
+  useEffect(() => {
+    if(openDuration === null) return;
+
+    if(openDuration !== -1) {
+      progressUpdateHandler();
+      setTimeout(() => {
+        componentUnloadHandler();
+      }, openDuration);
+    }
+  }, [openDuration]);
 
   useEffect(() => {
     setTimeout(() => {
-      console.log('closing');
-      props.onClose();
-    }, props.openDuration);
-
-  }, [props])
-
-
-
+      progressUpdateHandler();
+    }, 25);
+  }, [progressInterval]);
   return (
     <Overlay className={props.className}>
       <div className="content">
         <span className="heading">{dailyWords.heading}</span>
         <span className="sub-heading">{dailyWords.subHeading}</span>
+
+        {openDuration !== null && openDuration !== -1 &&
         <div className="progress-bar" style={{width: `${progress}%`}}>
           
         </div>
+        }
+        
+        {openDuration === -1 &&
+        <>
+        
+        <figure className="audio">
+          <audio controls>
+            <source src={`/Dark_Rainy_Night.ogg`} type="audio/ogg" />
+            Looks like your browser doesn&apos;t support the audio element.
+          </audio>
+    
+          <figcaption>
+            <cite>Dark Rainy Night - By: kindland</cite>
+          </figcaption>
+        </figure>
+        
+        <button onClick={componentUnloadHandler}>
+          <FontAwesomeIcon icon={faXmark} />
+        </button>
+        </>
+        }
+        
       </div>
     </Overlay>
   )
