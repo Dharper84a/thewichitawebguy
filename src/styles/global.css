@@ -9,5 +9,30 @@ html, body {
 
 body {
   font-size: 16px;
-  font-family: sans-serif;
+}
+
+.grettings-overlay-open-animation {
+  animation: fade-in 0.3s ease forwards;
+}
+
+.grettings-overlay-close-animation {
+  animation: fade-out 1s ease forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

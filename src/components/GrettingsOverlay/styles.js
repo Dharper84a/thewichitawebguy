@@ -9,7 +9,8 @@ export const Overlay = styled.div`
   width: 100vw;
   height: 100vh;
   padding: 10vw 0 0 0;
-  background: #424952;
+  background: rgb(64,13,89);
+  background: linear-gradient(225deg, rgba(64,13,89,1) 0%, rgba(19,14,71,1) 100%);
   .content {
     display: flex;
     justify-content: center;
@@ -20,13 +21,19 @@ export const Overlay = styled.div`
       width: 100%;
       color: #fff;
       &.heading {
-        padding: 0 0 1rem 0;
+        padding: 0 0 0.5rem 0;
         font-size: 2rem;
         font-weight: 600;
       }
       &.sub-heading {
         font-size: 1.5rem;
       }
+    }
+    .progress-bar {
+      height: 1rem;
+      border-radius: 2rem;
+      background: rgb(17,17,212);
+      background: linear-gradient(90deg, rgba(17,17,212,1) 0%, rgba(214,14,235,1) 100%);
     }
   }
 `
