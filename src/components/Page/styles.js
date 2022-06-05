@@ -10,10 +10,11 @@ const getRnd = (min = 0, max = 2000) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 const multipleBoxShadow = (n) => {
-  let value = `${getRnd()}px ${getRnd()}px #FFF`;
+  let value = `${getRnd()}px ${getRnd()}px rgba(255,255,255,0.25)`;
 
   for(var i = 1; i <= n; i++) {
-    value = `${value}, ${getRnd()}px ${getRnd()}px #FFF`;
+    let transparency = getRnd(0,50) / 100;
+    value = `${value}, ${getRnd()}px ${getRnd()}px rgba(255,255,255,${transparency})`;
   }
 
   return value;
@@ -31,19 +32,54 @@ export const PageContainer = styled.div`
 `;
 
 export const Content = styled.div`
-  max-width: 1366px;
-  margin: 1rem auto 6rem;
+  max-width: 1600px;
+  margin: 1rem auto 4rem;
+  padding: 0 6%;
+  
+  @media screen and (min-width: 768px) {
+    text-align: center;
+  }
+`;
+
+export const Menu = styled.nav`
+  margin: 1rem 0;
+  ul {
+    list-style: none;
+  }
+  @media screen and (min-width: 768px) {
+    margin: 2rem 0;
+  }
+`
+
+export const CTA = styled.p`
+  max-width: 20rem;
+  margin: 0 auto;
+  padding: 1rem 0;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.25;
+  @media screen and (min-width: 768px) {
+    margin: 2rem 0;
+    font-size: 1.125rem;
+    text-align: center;
+  }
 `
 export const FlipText = styled.div`
-  font-weight: 600;
-  font-size: 3.5rem;
-  color: #fff;
-  text-align: center;
-  transform: translateX(-80px);
+  width: 100%;
+  margin: 1rem 0;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
   p {
+    float: left;
     display: inline-flex;
     margin: 0;
     vertical-align: top;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 600;
     .word {
       position: absolute;
       display: flex;
@@ -80,6 +116,15 @@ export const FlipText = styled.div`
 
     .sun-flower {
       color: #f1c40f;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    margin: 2rem 0;
+    text-align: center;
+    transform: translateX(-80px);
+    p {
+      float: none;
+      font-size: 2rem;
     }
   }
 `

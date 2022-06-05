@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 
-import {PageContainer, Content, FlipText,StarsSmall, StarsMedium, StarsLarge} from './styles';
+import {PageContainer, Content, CTA, Menu, FlipText,StarsSmall, StarsMedium, StarsLarge} from './styles';
 
 const Page = (props) => {
   const onTransitionHandler = (e) => {
@@ -59,16 +59,36 @@ const Page = (props) => {
       <StarsMedium></StarsMedium>
       <StarsLarge></StarsLarge>
       <Content>
-      <img src="../images/twwg-logo.png" />
+      <img src="../images/twwg-logo.png" width="400" height="90" />
         <FlipText>
           <p>Websites Should Be&nbsp;</p>
           <p>
             <span class="word alizarin">Affordable</span>
-            <span class="word peter-river">Performant</span>
+            <span class="word peter-river">Convienent</span>
             <span class="word emerald">Accessible</span>
             <span class="word sun-flower">Honest</span>
           </p>
         </FlipText>
+        <CTA>
+          Every business deserves a great website that doesn't cost thousands.
+        </CTA>
+
+        <Menu>
+          <ul>
+            <li>
+              <a href="#">Donald Harper (that's me)</a>
+            </li>
+            <li>
+              <a href="#">What I'm Doing</a>
+            </li>
+            <li>
+              <a href="#">The Cost</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </Menu>
       </Content>
       {/* <button onClick={onTransitionHandler}>Transition</button> */}
     </PageContainer>
