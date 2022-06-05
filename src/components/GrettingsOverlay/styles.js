@@ -12,11 +12,21 @@ export const Overlay = styled.div`
   background: rgb(64,13,89);
   background: linear-gradient(225deg, rgba(64,13,89,1) 0%, rgba(19,14,71,1) 100%);
   .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
+    div {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+    }
     span {
       width: 100%;
       color: #fff;

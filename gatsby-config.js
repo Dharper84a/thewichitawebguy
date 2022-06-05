@@ -5,6 +5,7 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-styled-components",
+    "gatsby-plugin-image",
     {
       resolve: 'gatsby-plugin-typography',
       options: {

@@ -11,12 +11,21 @@ body {
   font-size: 16px;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+img {
+  margin: 0;
+}
+
 .grettings-overlay-open-animation {
   animation: fade-in 0.3s ease forwards;
 }
 
 .grettings-overlay-close-animation {
-  animation: fade-out 1s ease forwards;
+  animation: fade-out 1s ease forwards,
+              explode 1s ease forwards;
 }
 
 @keyframes fade-in {
@@ -34,5 +43,31 @@ body {
   }
   to {
     opacity: 0;
+  }
+}
+@keyframes implode {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes explode {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(3);
+  }
+}
+
+@keyframes fxStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
   }
 }

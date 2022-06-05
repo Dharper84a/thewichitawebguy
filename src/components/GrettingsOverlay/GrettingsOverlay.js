@@ -71,7 +71,7 @@ const GrettingsOverlay = (props) => {
     setMarriedFor(yearsSinceHandler(2014));
     setSinceLostChild(yearsSinceHandler(2018));
     setDailyWords(timeOfDayHandler());
-
+    return () => {}
   }, []);
 
 
@@ -82,13 +82,13 @@ const GrettingsOverlay = (props) => {
 
     if(dailyWords.heading) {
       if(dailyWords.heading !== '...') {
-        setOpenDuration(-1);
-        // setOpenDuration(props.openDuration);
+        // setOpenDuration(-1);
+        setOpenDuration(props.openDuration);
       } else {
         setOpenDuration(-1);
       }
     }
-    
+    return () => {}
   }, [dailyWords, props])
 
   useEffect(() => {
@@ -100,12 +100,15 @@ const GrettingsOverlay = (props) => {
         componentUnloadHandler();
       }, openDuration);
     }
+
+    return () => {}
   }, [openDuration]);
 
   useEffect(() => {
     setTimeout(() => {
       progressUpdateHandler();
     }, 25);
+    return () => {}
   }, [progressInterval]);
   return (
     <Overlay className={props.className}>
@@ -113,11 +116,13 @@ const GrettingsOverlay = (props) => {
         <span className="heading">{dailyWords.heading}</span>
         <span className="sub-heading">{dailyWords.subHeading}</span>
 
-        {openDuration !== null && openDuration !== -1 &&
-        <div className="progress-bar" style={{width: `${progress}%`}}>
-          
+        <div>
+          <button onClick={componentUnloadHandler} aria-label="Close overlay and go to main website">
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
         </div>
-        }
+        
+       
         
         {openDuration === -1 &&
         <>
@@ -132,13 +137,14 @@ const GrettingsOverlay = (props) => {
             <cite>Dark Rainy Night - By: kindland</cite>
           </figcaption>
         </figure>
-        
-        <button onClick={componentUnloadHandler}>
-          <FontAwesomeIcon icon={faXmark} />
-        </button>
         </>
         }
-        
+
+        {openDuration !== null && openDuration !== -1 &&
+        <div className="progress-bar" style={{width: `${progress}%`}}>
+          
+        </div>
+        }
       </div>
     </Overlay>
   )
