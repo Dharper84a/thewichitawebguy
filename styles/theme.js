@@ -23,8 +23,8 @@ const lineClamp = (lines) => {
 /** SHARED THEME SETTINGS */
 const sharedTheme = {
     font: {
-        primary: 'Montserrat, sans-serif',
-        secondary: 'Barlow Condensed, sans-serif',
+        primary: 'Montserrat, sans-serif', // 400, 500, 700
+        secondary: 'Barlow Condensed, sans-serif', // 400, 500
     },
     fontClamp: fontClamp,
     lineClamp: lineClamp,
@@ -36,7 +36,14 @@ export const darkTheme = {
         primary: '#FEFEFE',
         link: '#BB377D',
     },
+    button: {
+        primary: {
+            background: 'linear-gradient(to right, #BB377D, #89216B)', //'#BB377D',
+            text: '#FEFEFE',
+        }
+    },
     background: {
         base: '#16222A',
+        light: '#EFEFEF',
     }
 }

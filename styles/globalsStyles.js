@@ -113,6 +113,28 @@ export const GlobalStyles = createGlobalStyle`
     }
     /** END - LINK */
 
+    /** FORM */
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+    legend {
+        margin: 0.75rem 0 0.5rem 0;
+        font-family: ${({theme}) => theme.font.secondary};
+        font-size: ${({theme}) => theme.fontClamp(22, 26)};
+        font-weight: 500;
+        letter-spacing: 0.25px;
+    }
+    /** END - FORM */
+    button {
+        padding: 0.5rem 1rem;
+        color: ${({theme}) => theme.button.primary.text};
+        background: ${({theme}) => theme.button.primary.background};
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+    }
     @media (prefers-color-scheme: light) {
     html {
         color-scheme: dark;

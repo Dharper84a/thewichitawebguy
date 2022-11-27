@@ -3,8 +3,6 @@ import Layout from "../components/layout";
 import Sections from "../components/Sections";
 
 export default function Home({fields, sys}) {
-    const timeOfDayGretting = "Good Afternoon!";
-
     console.log('Fields', fields)
     return (
         <Layout>

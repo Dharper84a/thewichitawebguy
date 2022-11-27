@@ -1,14 +1,31 @@
+import Delivery from "../lib/contentful/delivery";
 import Layout from "../components/layout";
-import TextBlock from "../components/Sections/TextBlock";
+import Sections from "../components/Sections";
 
-export default function Prices() {
+export default function Prices({fields, sys}) {
     return (
         <Layout>
-            <TextBlock text={introText} heading={headingText} />
+            <Sections sections={fields.sections} />
         </Layout>
     );
 }
 
+
+export const getStaticProps = async(context) => {
+    const response = await Delivery.getPage('prices', context?.preview || false);
+  
+    if(response !== false) {
+        return {
+            props: { ...response },
+            revalidate: 60
+        }
+    } else {
+        return {
+            notFound: true,
+        }
+    }
+    
+}
 /*
 Common Scenario: Build, launch, fix, update, update, rebuild.
 5 to 8 years is generally the max life of a website.
