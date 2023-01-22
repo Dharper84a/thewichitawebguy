@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteHeader, SiteTitle } from "./styles";
 
 const Header = (props) => {
@@ -5,7 +6,11 @@ const Header = (props) => {
     return(
         <SiteHeader>
             <SiteTitle>
-                The Wichita Web Guy
+                <Link href="/" passHref>
+                    <a title="View The Wichita Web Guy's homepage">
+                        The Wichita Web Guy
+                    </a>
+                </Link>
             </SiteTitle>
         </SiteHeader>
     )

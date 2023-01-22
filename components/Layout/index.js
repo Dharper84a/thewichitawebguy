@@ -2,16 +2,15 @@ import Header from "./Header";
 import Footer from './Footer';
 
 import { Wrapper } from "./styles";
+import BackgroundEffect from "../BackgroundEffect";
 const Layout = (props) => {
 
     return (
-        
         <Wrapper>
-            <Header />
+            <BackgroundEffect />
             <main>
                 {props.children}
             </main>
-            <Footer />
         </Wrapper>
 
     )

@@ -27,22 +27,41 @@ export const ContentPadding = css`
     padding: 0 6%;
 `
 export const GlobalStyles = createGlobalStyle`
+    * {
+        box-sizing: border-box;
+    }
     html,
     body {
         padding: 0;
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
             Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        -webkit-font-smoothing: antialiased;
     }
 
     body {
-        font-family: ${({theme}) => theme.font.primary};
-        /* background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); */
+        font-family: ${({theme}) => theme.font.primary}; 
     }
 
-    * {
-        box-sizing: border-box;
+    main {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
+    
+    /** LISTS */
+    menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            margin: 0 0 0.5rem;
+        }
+    }
+    /** END - LISTS */
 
     /** HEADINGS */
     h1, h2, h3, h4, h5, h6 {
@@ -56,23 +75,23 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     h2 {
-        font-size: ${({theme}) => theme.fontClamp(32, 48)};
+        font-size: ${({theme}) => theme.fontClamp(26, 32)};
     }
 
     h3 {
-        font-size: ${({theme}) => theme.fontClamp(28, 38)};
+        font-size: ${({theme}) => theme.fontClamp(22, 28)};
     }
 
     h4 {
-        font-size: ${({theme}) => theme.fontClamp(24, 30)};
+        font-size: ${({theme}) => theme.fontClamp(18, 24)};
     }
 
     h5 {
-        font-size: ${({theme}) => theme.fontClamp(20, 24)};
+        font-size: ${({theme}) => theme.fontClamp(16, 20)};
     }
 
     h6 {
-        font-size: ${({theme}) => theme.fontClamp(16, 18)};
+        font-size: ${({theme}) => theme.fontClamp(16, 20)};
     }
     /** END - HEADINGS */
 
@@ -120,7 +139,7 @@ export const GlobalStyles = createGlobalStyle`
         border: none;
     }
     legend {
-        margin: 0.75rem 0 0.5rem 0;
+        padding: 0.75rem 0 0.25rem 0;
         font-family: ${({theme}) => theme.font.secondary};
         font-size: ${({theme}) => theme.fontClamp(22, 26)};
         font-weight: 500;
@@ -128,12 +147,20 @@ export const GlobalStyles = createGlobalStyle`
     }
     /** END - FORM */
     button {
+        position: relative;
+        z-index: 15;
         padding: 0.5rem 1rem;
         color: ${({theme}) => theme.button.primary.text};
-        background: ${({theme}) => theme.button.primary.background};
+        font-size: ${({theme}) => theme.fontClamp(16, 18)};
+        background: rgba(199,21,133, 0.75);
         border: none;
-        border-radius: 0.25rem;
+        border-radius: 0.125rem;
         cursor: pointer;
+        transition: all 0.2s;
+        &:hover {
+            transform: translateX(15px);
+        }
+       
     }
     @media (prefers-color-scheme: light) {
     html {

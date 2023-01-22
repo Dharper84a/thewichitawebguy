@@ -26,6 +26,13 @@ const sharedTheme = {
         primary: 'Montserrat, sans-serif', // 400, 500, 700
         secondary: 'Barlow Condensed, sans-serif', // 400, 500
     },
+    paddings: {
+        screenEdge: '6.5%',
+    },
+    mediaQuery: {
+        'up768': '(min-width: 768px)',
+        'up1024': '(min-width: 1024px)',
+    },
     fontClamp: fontClamp,
     lineClamp: lineClamp,
 }
@@ -34,6 +41,9 @@ export const darkTheme = {
     ...sharedTheme,
     text: {
         primary: '#FEFEFE',
+        secondary: "#232526",
+        light: '#FEFEFE',
+        dark: '#232526',
         link: '#BB377D',
     },
     button: {
@@ -45,5 +55,6 @@ export const darkTheme = {
     background: {
         base: '#16222A',
         light: '#EFEFEF',
+        white: '#FFFFFF',
     }
 }
