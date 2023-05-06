@@ -44,10 +44,10 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     main {
-        position: absolute;
+        /* position: absolute;
         z-index: 10;
         top: 0;
-        left: 0;
+        left: 0; */
         width: 100%;
         height: 100%;
     }
@@ -96,6 +96,14 @@ export const GlobalStyles = createGlobalStyle`
     /** END - HEADINGS */
 
     /** CONTENT */
+    ul {
+        margin: 0 0 0 1rem;
+        padding: 0;
+        list-style: none;
+        li {
+            margin-bottom: 0.5rem;
+        }
+    }
     span, p, li {
         color: ${({theme}) => theme.text.primary};
         font-family: ${({theme}) => theme.font.primary};

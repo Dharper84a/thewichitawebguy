@@ -7,7 +7,7 @@ const Layout = (props) => {
 
     return (
         <Wrapper>
-            <BackgroundEffect />
+            {props?.showBackgroundEffect && <BackgroundEffect />}
             <main>
                 {props.children}
             </main>
